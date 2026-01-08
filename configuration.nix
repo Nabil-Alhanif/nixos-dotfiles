@@ -62,7 +62,7 @@
 	# Define a user account. Don't forget to set a password with ‘passwd’.
 	users.users.nabil-alhanif = {
 		isNormalUser = true;
-		extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+		extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
 		shell = pkgs.fish;
 		home = "/home/nabil-alhanif-nixos";
 	};
@@ -89,6 +89,8 @@
 		fastfetch
 		inputs.zen-browser.packages."${system}".default
 		ripgrep
+		networkmanagerapplet
+		zstd
 	];
 
 	fonts.packages = with pkgs; [
