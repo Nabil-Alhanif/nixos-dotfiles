@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
 	imports =
@@ -67,8 +67,6 @@
 		home = "/home/nabil-alhanif-nixos";
 	};
 
-	programs.firefox.enable = true;
-
 	# List packages installed in system profile.
 	# You can use https://search.nixos.org/ to find more packages (and options).
 	environment.systemPackages = with pkgs; [
@@ -88,6 +86,8 @@
 		eza
 		git
 		gcc
+		fastfetch
+		inputs.zen-browser.packages."${system}".default
 	];
 
 	fonts.packages = with pkgs; [
