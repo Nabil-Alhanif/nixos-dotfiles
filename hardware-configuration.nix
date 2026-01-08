@@ -38,6 +38,12 @@ boot.supportedFilesystems = [ "btrfs" ];
       options = [ "compress=zstd" "relatime" "ssd" "discard=async" "space_cache=v2" "subvol=@home" ];
     };
 
+  fileSystems."/mnt/data" =
+    { device = "/dev/disk/by-uuid/380ccf23-4345-4661-8dc7-da401ee1c9db";
+      fsType = "btrfs";
+      options = [ "compress=zstd" "relatime" "ssd" "discard=async" "space_cache=v2" "subvol=@data" ];
+    };
+
   swapDevices =
     [ {
 device = "/dev/disk/by-uuid/c60d0c53-9081-4085-b917-11df0e4383cd";
