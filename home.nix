@@ -5,7 +5,7 @@
 	home.homeDirectory = "/home/nabil-alhanif-nixos";
 
 	home.packages = with pkgs; [
-		# endless-sky
+		endless-sky
 	];
 
 	programs.git = {
