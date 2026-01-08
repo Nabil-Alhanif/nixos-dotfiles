@@ -88,6 +88,7 @@
 		gcc
 		fastfetch
 		inputs.zen-browser.packages."${system}".default
+		ripgrep
 	];
 
 	fonts.packages = with pkgs; [
