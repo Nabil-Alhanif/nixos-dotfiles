@@ -4,53 +4,57 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+	imports =
+		[ (modulesPath + "/installer/scan/not-detected.nix")
+		];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
-boot.supportedFilesystems = [ "btrfs" ];
+	boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "usbhid" "sd_mod" ];
+	boot.initrd.kernelModules = [ ];
+	boot.kernelModules = [ "kvm-amd" ];
+	boot.extraModulePackages = [ ];
+	boot.supportedFilesystems = [ "btrfs" ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/82547ed8-b91d-45f7-9148-92881e1a2b3c";
-      fsType = "btrfs";
-      options = [ "compress=zstd" "relatime" "ssd" "discard=async" "space_cache=v2" "subvol=@Nixos" ];
-    };
+	fileSystems."/" =
+		{ device = "/dev/disk/by-uuid/82547ed8-b91d-45f7-9148-92881e1a2b3c";
+			fsType = "btrfs";
+			options = [ "compress=zstd" "relatime" "ssd" "discard=async" "space_cache=v2" "subvol=@Nixos" ];
+		};
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E095-0690";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
+	fileSystems."/boot" =
+		{ device = "/dev/disk/by-uuid/E095-0690";
+			fsType = "vfat";
+			options = [ "fmask=0022" "dmask=0022" ];
+		};
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/82547ed8-b91d-45f7-9148-92881e1a2b3c";
-      fsType = "btrfs";
-      options = [ "noatime" "ssd" "discard=async" "space_cache=v2" "subvol=@nix" ];
-    };
+	fileSystems."/nix" =
+		{ device = "/dev/disk/by-uuid/82547ed8-b91d-45f7-9148-92881e1a2b3c";
+			fsType = "btrfs";
+			options = [ "noatime" "ssd" "discard=async" "space_cache=v2" "subvol=@nix" ];
+		};
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/82547ed8-b91d-45f7-9148-92881e1a2b3c";
-      fsType = "btrfs";
-      options = [ "compress=zstd" "relatime" "ssd" "discard=async" "space_cache=v2" "subvol=@home" ];
-    };
+	fileSystems."/home" =
+		{ device = "/dev/disk/by-uuid/82547ed8-b91d-45f7-9148-92881e1a2b3c";
+			fsType = "btrfs";
+			options = [ "compress=zstd" "relatime" "ssd" "discard=async" "space_cache=v2" "subvol=@home" ];
+		};
 
-  fileSystems."/mnt/data" =
-    { device = "/dev/disk/by-uuid/380ccf23-4345-4661-8dc7-da401ee1c9db";
-      fsType = "btrfs";
-      options = [ "compress=zstd" "relatime" "ssd" "discard=async" "space_cache=v2" "subvol=@data" ];
-    };
+	fileSystems."/mnt/data" =
+		{ device = "/dev/disk/by-uuid/380ccf23-4345-4661-8dc7-da401ee1c9db";
+			fsType = "btrfs";
+			options = [ "compress=zstd" "relatime" "ssd" "discard=async" "space_cache=v2" "subvol=@data" ];
+		};
 
-  swapDevices =
-    [ {
-device = "/dev/disk/by-uuid/c60d0c53-9081-4085-b917-11df0e4383cd";
-options = [ "noatime" ];
-}
-    ];
+	fileSystems."/mnt/games" =
+		{ device = "/dev/disk/by-uuid/51f3949e-c1b6-47f0-92ee-bb114c71eb8f";
+			fsType = "ext4";
+		};
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+	swapDevices =
+		[ {
+				device = "/dev/disk/by-uuid/c60d0c53-9081-4085-b917-11df0e4383cd";
+				options = [ "noatime" ];
+		} ];
+
+	nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+	hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
