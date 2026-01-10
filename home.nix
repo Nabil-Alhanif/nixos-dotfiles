@@ -6,6 +6,18 @@
 
 	home.packages = with pkgs; [
 		endless-sky
+
+		# Python setup, mostly for school and whatnot
+		(python3.withPackages(pypkgs: with pypkgs; [
+			jupyterlab # Jupyter Lab, yk for school stuff
+			ipykernel # A somewhat requirement?
+			ipywidgets # UI
+
+			# Some basic numerical / statistical packages
+			pandas
+			numpy
+			matplotlib
+		]))
 	];
 
 	programs.git = {
