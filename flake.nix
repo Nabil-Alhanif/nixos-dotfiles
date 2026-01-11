@@ -13,6 +13,11 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		noctalia = {
+			url = "github:noctalia-dev/noctalia-shell";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		# Zen browser lol
 		zen-browser = {
 			url = "github:0xc000022070/zen-browser-flake";
@@ -32,6 +37,7 @@
 
 				# Make home-manager as a module of NixOS
 				home-manager.nixosModules.home-manager {
+					home-manager.extraSpecialArgs = { inherit inputs; };
 					home-manager.users.nabil-alhanif = import ./home.nix;
 				}
 			];

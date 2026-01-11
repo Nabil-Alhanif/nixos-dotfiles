@@ -22,6 +22,12 @@
 	# Configure network connections interactively with nmcli or nmtui.
 	networking.networkmanager.enable = true;
 
+	# Bluetooth
+	hardware.bluetooth.enable = true;
+
+	services.power-profiles-daemon.enable = true;
+	services.upower.enable = true;
+
 	# Set your time zone.
 	time.timeZone = "Canada/Pacific";
 
@@ -40,6 +46,8 @@
 	# Enable the X11 windowing system.
 	services.xserver.enable = true;
 	programs.xwayland.enable = true;
+
+	security.polkit.enable = true;
 
 	# Configure keymap in X11
 	# services.xserver.xkb.layout = "us";
@@ -74,7 +82,6 @@
 		grim # Screenshot Functionality
 		slurp # Screenshot Functionality
 		wl-clipboard # wl-copy and wl-paste for copy/paste from stdin/stdout
-		mako # Notification daemon
 		kitty # Terminal emulator
 		swayfx # Uhhhh idk????????
 		wget

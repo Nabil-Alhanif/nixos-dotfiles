@@ -1,6 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
+	imports = [
+		./homeModules/swayfx.nix
+		./homeModules/noctalia.nix
+	];
+
 	home.username = "nabil-alhanif";
 	home.homeDirectory = "/home/nabil-alhanif-nixos";
 
