@@ -35,6 +35,19 @@
 		};
 	};
 
+	programs.ssh = {
+		enable = true;
+		addKeysToAgent = "yes";
+		matchBlocks = {
+			"github.com" = {
+				hostname = "github.com";
+				identityFile = "~/.ssh/gh-main";
+			};
+		};
+	};
+
+	services.ssh-agent.enable = true;
+
 	programs.fish = {
 		enable = true;
 		shellAliases = {
