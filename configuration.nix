@@ -98,6 +98,11 @@
 		ripgrep
 		networkmanagerapplet
 		zstd
+		qalculate-qt
+		ranger
+		kdePackages.dolphin
+		imv
+		vlc
 	];
 
 	fonts.packages = with pkgs; [
