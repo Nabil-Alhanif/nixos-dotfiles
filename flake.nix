@@ -34,6 +34,7 @@
 			modules = [
 				# Import previous configuration.nix
 				./configuration.nix
+				./virtualisation.nix
 
 				# Make home-manager as a module of NixOS
 				home-manager.nixosModules.home-manager {
