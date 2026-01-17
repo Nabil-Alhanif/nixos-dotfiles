@@ -33,6 +33,9 @@
 					];
 					right = [
 						{
+							id = "Tray";
+						}
+						{
 							id = "WiFi";
 						}
 						{
