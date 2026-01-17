@@ -38,6 +38,7 @@
 			modules = [
 				# Import previous configuration.nix
 				./configuration.nix
+				./virtualisation.nix
 
 				# Add hardware model
 				nixos-hardware.nixosModules.framework-16-7040-amd
