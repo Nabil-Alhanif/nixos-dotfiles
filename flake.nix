@@ -25,15 +25,22 @@
 				nixpkgs.follows = "nixpkgs";
 			};
 		};
+
+		nixos-hardware = {
+			url = "github:NixOS/nixos-hardware/master";
+		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, zen-browser, ... }@inputs: {
+	outputs = { self, nixpkgs, home-manager, zen-browser, nixos-hardware, ... }@inputs: {
 		nixosConfigurations.NA-NFW16 = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { inherit inputs; };
 			modules = [
 				# Import previous configuration.nix
 				./configuration.nix
+
+				# Add hardware model
+				nixos-hardware.nixosModules.framework-16-7040-amd
 
 				# Make home-manager as a module of NixOS
 				home-manager.nixosModules.home-manager {

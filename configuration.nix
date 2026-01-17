@@ -25,6 +25,10 @@
 	# Bluetooth
 	hardware.bluetooth.enable = true;
 
+	hardware.opengl = {
+		enable = true;
+	};
+
 	services.power-profiles-daemon.enable = true;
 	services.upower.enable = true;
 
@@ -45,6 +49,7 @@
 
 	# Enable the X11 windowing system.
 	services.xserver.enable = true;
+	services.xserver.videoDrivers = [ "amdgpu" ];
 	programs.xwayland.enable = true;
 
 	security.polkit.enable = true;
@@ -74,6 +79,11 @@
 		shell = pkgs.fish;
 		home = "/home/nabil-alhanif-nixos";
 	};
+
+	programs.steam.enable = true;
+	programs.steam.extraCompatPackages = with pkgs; [
+		proton-ge-bin
+	];
 
 	# List packages installed in system profile.
 	# You can use https://search.nixos.org/ to find more packages (and options).
@@ -132,6 +142,11 @@
 
 	# Enable the OpenSSH daemon.
 	services.openssh.enable = true;
+
+	nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+		"steam"
+		"steam-unwrapped"
+	];
 
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
