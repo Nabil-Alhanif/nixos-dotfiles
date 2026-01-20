@@ -13,6 +13,7 @@
 		endless-sky
 		pandoc
 		qrencode
+		zotero
 
 		# Python setup, mostly for school and whatnot
 		(python3.withPackages(pypkgs: with pypkgs; [

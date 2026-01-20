@@ -12,7 +12,7 @@
 	boot.initrd.kernelModules = [ ];
 	boot.kernelModules = [ "kvm-amd" ];
 	boot.extraModulePackages = [ ];
-	boot.supportedFilesystems = [ "btrfs" ];
+	boot.supportedFilesystems = [ "btrfs" "ntfs" ];
 
 	fileSystems."/" =
 		{ device = "/dev/disk/by-uuid/82547ed8-b91d-45f7-9148-92881e1a2b3c";
@@ -47,6 +47,11 @@
 	fileSystems."/mnt/games" =
 		{ device = "/dev/disk/by-uuid/51f3949e-c1b6-47f0-92ee-bb114c71eb8f";
 			fsType = "ext4";
+		};
+
+	fileSystems."/mnt/windows" =
+		{ device = "/dev/disk/by-uuid/A2401DC0401D9C5B";
+			fsType = "ntfs";
 		};
 
 	swapDevices =
