@@ -100,6 +100,8 @@
 		kdePackages.dolphin
 		imv
 		vlc
+		zip
+		unzip
 	];
 
 	fonts.packages = with pkgs; [
@@ -125,6 +127,8 @@
 		"steam"
 		"steam-unwrapped"
 	];
+
+	system.autoUpgrade.enable = true;
 
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 	system.stateVersion = "25.11"; # Did you read the comment?

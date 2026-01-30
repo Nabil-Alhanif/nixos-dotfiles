@@ -11,10 +11,10 @@
 		dnsmasq
 		virt-manager
 		virt-viewer
+		virtio-win
 		spice
 		spice-gtk
 		spice-protocol
-		virtio-win
 		win-spice
 		adwaita-icon-theme
 	];
@@ -27,6 +27,9 @@
 
 				# Folder sharing
 				swtpm.enable = true;
+
+				# Folder sharing
+				vhostUserPackages = [ pkgs.virtiofsd ];
 
 				# Now enabled by default
 				# ovmf = {
@@ -41,36 +44,35 @@
 
 	services.spice-vdagentd.enable = true;
 
-	services.samba = {
-		enable = true;
-		securityType = "user";
-		openFirewall = true;
-		settings = {
-			global = {
-				"workgroup" = "WORKGROUP";
-				"security" = "user";
-				"interfaces" = "lo virbr0";
-				"bind interfaces only" = "yes";
-				"hosts allow" = "127. 192.168. localhost";
-				"hosts deny" = "0.0.0.0/0";
-				"map to guest" = "bad user";
-			};
-			"Data" = {
-				"path" = "/mnt/data";
-				"browseable" = "yes";
-				"read only" = "no";
-				"guest ok" = "no";
-				"create mask" = "0644";
-				"directory mask" = "0755";
-			};
-			"WindowsData" = {
-				"path" = "/mnt/windows";
-				"browseable" = "yes";
-				"read only" = "no";
-				"guest ok" = "no";
-				"create mask" = "0644";
-				"directory mask" = "0755";
-			};
-		};
-	};
+#	services.samba = {
+#		enable = true;
+#		openFirewall = true;
+#		settings = {
+#			global = {
+#				"workgroup" = "WORKGROUP";
+#				"security" = "user";
+#				"interfaces" = "lo virbr0";
+#				"bind interfaces only" = "yes";
+#				"hosts allow" = "127. 192.168. localhost";
+#				"hosts deny" = "0.0.0.0/0";
+#				"map to guest" = "bad user";
+#			};
+#			"Data" = {
+#				"path" = "/mnt/data";
+#				"browseable" = "yes";
+#				"read only" = "no";
+#				"guest ok" = "no";
+#				"create mask" = "0644";
+#				"directory mask" = "0755";
+#			};
+#			"WindowsData" = {
+#				"path" = "/mnt/windows";
+#				"browseable" = "yes";
+#				"read only" = "no";
+#				"guest ok" = "no";
+#				"create mask" = "0644";
+#				"directory mask" = "0755";
+#			};
+#		};
+#	};
 }
