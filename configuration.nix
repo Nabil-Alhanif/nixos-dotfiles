@@ -102,6 +102,7 @@
 		vlc
 		zip
 		unzip
+		gimp
 	];
 
 	fonts.packages = with pkgs; [
