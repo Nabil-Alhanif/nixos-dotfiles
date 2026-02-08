@@ -15,11 +15,14 @@
 		qrencode
 		zotero
 
+		texlive.combined.scheme-medium
+
 		# Python setup, mostly for school and whatnot
 		(python3.withPackages(pypkgs: with pypkgs; [
 			jupyterlab # Jupyter Lab, yk for school stuff
 			ipykernel # A somewhat requirement?
 			ipywidgets # UI
+			nbconvert # For export
 
 			# Some basic numerical / statistical packages
 			pandas
@@ -27,6 +30,13 @@
 			matplotlib
 		]))
 	];
+
+	
+	programs.direnv = {
+		enable = true;
+		enableBashIntegration = true; # see note on other shells below
+		nix-direnv.enable = true;
+	};
 
 	programs.git = {
 		enable = true;

@@ -31,7 +31,7 @@
 		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, zen-browser, nixos-hardware, ... }@inputs: {
+	outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }@inputs: {
 		nixosConfigurations.NA-NFW16 = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { inherit inputs; };

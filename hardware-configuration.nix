@@ -11,6 +11,10 @@
 	boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "usbhid" "sd_mod" ];
 	boot.initrd.kernelModules = [ ];
 	boot.kernelModules = [ "kvm-amd" ];
+
+	# Disable PSR & Panel Replay https://community.frame.work/t/screen-flickering-on-linux-kernel-6-12/62632/17
+	boot.kernelParams = [ "amdgpu.dcdebugmaxk=0x410" ];
+
 	boot.extraModulePackages = [ ];
 	boot.supportedFilesystems = [ "btrfs" "ntfs" ];
 
