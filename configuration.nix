@@ -92,6 +92,8 @@
 		gcc
 		fastfetch
 		inputs.zen-browser.packages."${system}".default
+		inputs.winapps.packages."${system}".winapps
+		inputs.winapps.packages."${system}".winapps-launcher
 		ripgrep
 		networkmanagerapplet
 		zstd

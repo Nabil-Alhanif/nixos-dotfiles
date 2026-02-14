@@ -9,6 +9,10 @@
 	home.username = "nabil-alhanif";
 	home.homeDirectory = "/home/nabil-alhanif-nixos";
 
+	home.sessionPath = [
+		"/home/nabil-alhanif-nixos/.local/bin" # https://discourse.nixos.org/t/add-directory-to-path/36345/2
+	];
+
 	home.packages = with pkgs; [
 		endless-sky
 		pandoc

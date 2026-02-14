@@ -13,7 +13,7 @@
 	boot.kernelModules = [ "kvm-amd" ];
 
 	# Disable PSR & Panel Replay https://community.frame.work/t/screen-flickering-on-linux-kernel-6-12/62632/17
-	boot.kernelParams = [ "amdgpu.dcdebugmaxk=0x410" ];
+	boot.kernelParams = [ "amdgpu.dcdebugmask=0x410" ];
 
 	boot.extraModulePackages = [ ];
 	boot.supportedFilesystems = [ "btrfs" "ntfs" ];
